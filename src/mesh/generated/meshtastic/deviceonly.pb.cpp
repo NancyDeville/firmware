@@ -18,11 +18,25 @@ PB_BIND(meshtastic_NodeInfoLite, meshtastic_NodeInfoLite, AUTO)
 PB_BIND(meshtastic_DeviceState, meshtastic_DeviceState, 2)
 
 
+PB_BIND(meshtastic_NodePositionEntry, meshtastic_NodePositionEntry, AUTO)
+
+
+PB_BIND(meshtastic_NodeTelemetryEntry, meshtastic_NodeTelemetryEntry, AUTO)
+
+
+PB_BIND(meshtastic_NodeEnvironmentEntry, meshtastic_NodeEnvironmentEntry, 2)
+
+
+PB_BIND(meshtastic_NodeStatusEntry, meshtastic_NodeStatusEntry, AUTO)
+
+
+PB_BIND(meshtastic_NodeDatabase, meshtastic_NodeDatabase, AUTO)
+
+
 PB_BIND(meshtastic_ChannelFile, meshtastic_ChannelFile, 2)
 
 
-PB_BIND(meshtastic_OEMStore, meshtastic_OEMStore, 2)
-
+PB_BIND(meshtastic_BackupPreferences, meshtastic_BackupPreferences, 2)
 
 
 
