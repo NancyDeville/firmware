@@ -4,6 +4,7 @@
 #ifndef PB_MESHTASTIC_MESHTASTIC_CHANNEL_PB_H_INCLUDED
 #define PB_MESHTASTIC_MESHTASTIC_CHANNEL_PB_H_INCLUDED
 #include <pb.h>
+#include "meshtastic/field_metadata.pb.h"
 
 #if PB_PROTO_HEADER_VERSION != 40
 #error Regenerate this file with the current version of nanopb generator.
@@ -34,9 +35,9 @@ typedef enum _meshtastic_Channel_Role {
 typedef struct _meshtastic_ModuleSettings {
     /* Bits of precision for the location sent in position packets. */
     uint32_t position_precision;
-    /* Controls whether or not the phone / clients should mute the current channel
+    /* Controls whether or not the client / device should mute the current channel
  Useful for noisy public channels you don't necessarily want to disable */
-    bool is_client_muted;
+    bool is_muted;
 } meshtastic_ModuleSettings;
 
 typedef PB_BYTES_ARRAY_T(32) meshtastic_ChannelSettings_psk_t;
@@ -97,6 +98,14 @@ typedef struct _meshtastic_ChannelSettings {
     /* Per-channel module settings. */
     bool has_module_settings;
     meshtastic_ModuleSettings module_settings;
+    /* Enable authenticated encryption (AES-CCM) for this channel.
+ When true, messages include a 12-byte authentication tag that prevents
+ forgery and bit-flipping attacks. All nodes on the channel must have
+ this enabled - unauthenticated (AES-CTR) packets are rejected.
+ Overrides SecurityConfig.packet_signature_policy for this channel: its packets are never XEdDSA signed,
+ and are not dropped for lacking a signature, because the tag authenticates them.
+ Experimental. Default: false (standard AES-CTR encryption). */
+    bool use_aead;
 } meshtastic_ChannelSettings;
 
 /* A pair of a channel number, mode and the (sharable) settings for that channel */
@@ -128,16 +137,16 @@ extern "C" {
 
 
 /* Initializer values for message structs */
-#define meshtastic_ChannelSettings_init_default  {0, {0, {0}}, "", 0, 0, 0, false, meshtastic_ModuleSettings_init_default}
+#define meshtastic_ChannelSettings_init_default  {0, {0, {0}}, "", 0, 0, 0, false, meshtastic_ModuleSettings_init_default, 0}
 #define meshtastic_ModuleSettings_init_default   {0, 0}
 #define meshtastic_Channel_init_default          {0, false, meshtastic_ChannelSettings_init_default, _meshtastic_Channel_Role_MIN}
-#define meshtastic_ChannelSettings_init_zero     {0, {0, {0}}, "", 0, 0, 0, false, meshtastic_ModuleSettings_init_zero}
+#define meshtastic_ChannelSettings_init_zero     {0, {0, {0}}, "", 0, 0, 0, false, meshtastic_ModuleSettings_init_zero, 0}
 #define meshtastic_ModuleSettings_init_zero      {0, 0}
 #define meshtastic_Channel_init_zero             {0, false, meshtastic_ChannelSettings_init_zero, _meshtastic_Channel_Role_MIN}
 
 /* Field tags (for use in manual encoding/decoding) */
 #define meshtastic_ModuleSettings_position_precision_tag 1
-#define meshtastic_ModuleSettings_is_client_muted_tag 2
+#define meshtastic_ModuleSettings_is_muted_tag   2
 #define meshtastic_ChannelSettings_channel_num_tag 1
 #define meshtastic_ChannelSettings_psk_tag       2
 #define meshtastic_ChannelSettings_name_tag      3
@@ -145,6 +154,7 @@ extern "C" {
 #define meshtastic_ChannelSettings_uplink_enabled_tag 5
 #define meshtastic_ChannelSettings_downlink_enabled_tag 6
 #define meshtastic_ChannelSettings_module_settings_tag 7
+#define meshtastic_ChannelSettings_use_aead_tag  8
 #define meshtastic_Channel_index_tag             1
 #define meshtastic_Channel_settings_tag          2
 #define meshtastic_Channel_role_tag              3
@@ -157,14 +167,15 @@ X(a, STATIC,   SINGULAR, STRING,   name,              3) \
 X(a, STATIC,   SINGULAR, FIXED32,  id,                4) \
 X(a, STATIC,   SINGULAR, BOOL,     uplink_enabled,    5) \
 X(a, STATIC,   SINGULAR, BOOL,     downlink_enabled,   6) \
-X(a, STATIC,   OPTIONAL, MESSAGE,  module_settings,   7)
+X(a, STATIC,   OPTIONAL, MESSAGE,  module_settings,   7) \
+X(a, STATIC,   SINGULAR, BOOL,     use_aead,          8)
 #define meshtastic_ChannelSettings_CALLBACK NULL
 #define meshtastic_ChannelSettings_DEFAULT NULL
 #define meshtastic_ChannelSettings_module_settings_MSGTYPE meshtastic_ModuleSettings
 
 #define meshtastic_ModuleSettings_FIELDLIST(X, a) \
 X(a, STATIC,   SINGULAR, UINT32,   position_precision,   1) \
-X(a, STATIC,   SINGULAR, BOOL,     is_client_muted,   2)
+X(a, STATIC,   SINGULAR, BOOL,     is_muted,          2)
 #define meshtastic_ModuleSettings_CALLBACK NULL
 #define meshtastic_ModuleSettings_DEFAULT NULL
 
@@ -187,8 +198,8 @@ extern const pb_msgdesc_t meshtastic_Channel_msg;
 
 /* Maximum encoded size of messages (where known) */
 #define MESHTASTIC_MESHTASTIC_CHANNEL_PB_H_MAX_SIZE meshtastic_Channel_size
-#define meshtastic_ChannelSettings_size          72
-#define meshtastic_Channel_size                  87
+#define meshtastic_ChannelSettings_size          74
+#define meshtastic_Channel_size                  89
 #define meshtastic_ModuleSettings_size           8
 
 #ifdef __cplusplus

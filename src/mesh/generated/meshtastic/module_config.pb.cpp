@@ -9,7 +9,7 @@
 PB_BIND(meshtastic_ModuleConfig, meshtastic_ModuleConfig, 2)
 
 
-PB_BIND(meshtastic_ModuleConfig_MQTTConfig, meshtastic_ModuleConfig_MQTTConfig, 2)
+PB_BIND(meshtastic_ModuleConfig_MQTTConfig, meshtastic_ModuleConfig_MQTTConfig, AUTO)
 
 
 PB_BIND(meshtastic_ModuleConfig_MapReportSettings, meshtastic_ModuleConfig_MapReportSettings, AUTO)
@@ -28,6 +28,9 @@ PB_BIND(meshtastic_ModuleConfig_AudioConfig, meshtastic_ModuleConfig_AudioConfig
 
 
 PB_BIND(meshtastic_ModuleConfig_PaxcounterConfig, meshtastic_ModuleConfig_PaxcounterConfig, AUTO)
+
+
+PB_BIND(meshtastic_ModuleConfig_TrafficManagementConfig, meshtastic_ModuleConfig_TrafficManagementConfig, AUTO)
 
 
 PB_BIND(meshtastic_ModuleConfig_SerialConfig, meshtastic_ModuleConfig_SerialConfig, AUTO)
@@ -51,7 +54,21 @@ PB_BIND(meshtastic_ModuleConfig_CannedMessageConfig, meshtastic_ModuleConfig_Can
 PB_BIND(meshtastic_ModuleConfig_AmbientLightingConfig, meshtastic_ModuleConfig_AmbientLightingConfig, AUTO)
 
 
+PB_BIND(meshtastic_ModuleConfig_StatusMessageConfig, meshtastic_ModuleConfig_StatusMessageConfig, AUTO)
+
+
+PB_BIND(meshtastic_ModuleConfig_MeshBeaconConfig, meshtastic_ModuleConfig_MeshBeaconConfig, 2)
+
+
+PB_BIND(meshtastic_ModuleConfig_MeshBeaconConfig_BroadcastTarget, meshtastic_ModuleConfig_MeshBeaconConfig_BroadcastTarget, AUTO)
+
+
+PB_BIND(meshtastic_ModuleConfig_TAKConfig, meshtastic_ModuleConfig_TAKConfig, AUTO)
+
+
 PB_BIND(meshtastic_RemoteHardwarePin, meshtastic_RemoteHardwarePin, AUTO)
+
+
 
 
 
