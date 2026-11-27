@@ -5,53 +5,53 @@
 // TRACKSENGER 2.8" IPS 320x240
 
 // I2C
-// #define I2C_SDA 42
-// #define I2C_SCL 41
-// #define HAS_SCREEN 1
-// #define USE_SSD1306
+ //#define I2C_SDA 42
+ //#define I2C_SCL 41
+ //#define HAS_SCREEN 1
+ //#define USE_SSD1306
 
 // Default SPI1 will be mapped to the display
-//#define ST7789_SDA 42
-//#define ST7789_SCK 41
-//#define ST7789_CS 38
-//#define ST7789_RS 40
-//#define ST7789_BL 21
+#define ST7789_SDA 42
+#define ST7789_SCK 41
+#define ST7789_CS 38
+#define ST7789_RS 40
+#define ST7789_BL 21
 //#define USE_TFTDISPLAY 1
-// P#define TFT_BL 21 /* V1.1 PCB marking */
+ #define TFT_BL 21 /* V1.1 PCB marking */
 
-//#define ST7789_RESET -1
-//#define ST7789_MISO -1
-//#define ST7789_BUSY -1
-//#define ST7789_SPI_HOST SPI3_HOST
-//#define TFT_BL 21
-//#define SPI_FREQUENCY 40000000
-//#define SPI_READ_FREQUENCY 16000000
-//#define TFT_HEIGHT 320
-//#define TFT_WIDTH 240
-//#define TFT_OFFSET_X 0
-//#define TFT_OFFSET_Y 0
-//#define TFT_OFFSET_ROTATION 0
-//#define SCREEN_ROTATE
+#define ST7789_RESET -1
+#define ST7789_MISO -1
+#define ST7789_BUSY -1
+#define ST7789_SPI_HOST SPI3_HOST
+#define TFT_BL 21
+#define SPI_FREQUENCY 40000000
+#define SPI_READ_FREQUENCY 16000000
+#define TFT_HEIGHT 320
+#define TFT_WIDTH 240
+#define TFT_OFFSET_X 0
+#define TFT_OFFSET_Y 0
+#define TFT_OFFSET_ROTATION 0
+#define SCREEN_ROTATE
 
 // ST7735S TFT LCD
- #define ST7735S 1 // there are different (sub-)versions of ST7735
- #define ST7735_CS 38
- #define ST7735_RS 40  // DC
- #define ST7735_SDA 42 // MOSI
- #define ST7735_SCK 41
- #define ST7735_RESET 39
- #define ST7735_MISO -1
- #define ST7735_BUSY -1
- #define TFT_BL 21 /* V1.1 PCB marking */
- #define ST7735_SPI_HOST SPI3_HOST
- #define SPI_FREQUENCY 40000000
- #define SPI_READ_FREQUENCY 16000000
- #define SCREEN_ROTATE
- #define TFT_HEIGHT DISPLAY_WIDTH
- #define TFT_WIDTH DISPLAY_HEIGHT
- #define TFT_OFFSET_X 26
- #define TFT_OFFSET_Y -1
- #define SCREEN_TRANSITION_FRAMERATE 3 // fps
+ //#define ST7735S 1 // there are different (sub-)versions of ST7735
+ //#define ST7735_CS 38
+ //#define ST7735_RS 40  // DC
+ //#define ST7735_SDA 42 // MOSI
+ //#define ST7735_SCK 41
+ //#define ST7735_RESET 39
+ //#define ST7735_MISO -1
+ //#define ST7735_BUSY -1
+ //#define TFT_BL 21 /* V1.1 PCB marking */
+ //#define ST7735_SPI_HOST SPI3_HOST
+ //#define SPI_FREQUENCY 40000000
+ //#define SPI_READ_FREQUENCY 16000000
+ //#define SCREEN_ROTATE
+ //#define TFT_HEIGHT DISPLAY_WIDTH
+ //#define TFT_WIDTH DISPLAY_HEIGHT
+ //#define TFT_OFFSET_X 26
+ //#define TFT_OFFSET_Y -1
+ //#define SCREEN_TRANSITION_FRAMERATE 3 // fps
 // #define DISPLAY_FORCE_SMALL_FONTS
 
 #define VEXT_ENABLE 3 // active HIGH, powers the lora antenna boost
